@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Plazas...</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="verplazasdisponibles.js"></script>
+</head>
+<body data-ng-app="ParkingApp">
+
+<div data-ng-controller="ParkingController">
+<h2>Buscar plazas disponibles</h2>
+<form data-ng-submit="buscar_plazas()">
+		<table>
+			<tr>
+				<td>Fecha Inicio</td>
+				<td><input type="text" datetime="yyyy-MM-dd" data-ng-model="inicio"/></td>	
+			</tr>
+			<tr>
+				<td>Fecha Fin</td>
+				<td><input type="text" datetime="yyyy-MM-dd" data-ng-model="fin"/></td>	
+			</tr>
+		</table>
+		<input type="submit" value="Buscar..."/>
+		</form>
+		<ul data-ng-repeat="plaza in plazasDisponibles">
+			<li>{{plaza.numero}} {{plaza.planta}} {{plaza.ancho}} {{plaza.largo}} {{plaza.bloqueada}} {{plaza.observaciones}} </li>		
+		</ul>
+</div>
+
+</body>
+</html>

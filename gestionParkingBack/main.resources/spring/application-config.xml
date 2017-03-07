@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+ 	
+ 	
+	<!-- =================================================================================== -->
+	<!-- Properties placeholder		(Para la base de datos)									 -->
+	<!-- =================================================================================== --> 	
+ 
+	<context:property-placeholder location="classpath:properties/*.properties" />
+ 
+ 	<!-- =================================================================================== -->
+	<!-- Package scan												              		     -->
+	<!-- =================================================================================== -->
+ 
+	<context:component-scan base-package="com.pgrsoft.gestionparking.backend.dao.impl" />
+	<context:component-scan base-package="com.pgrsoft.gestionparking.backend.services.impl" />   <!-- NEW -->
+	
+	<!-- =================================================================================== -->
+	<!-- Imports and Component Scans 														 -->
+	<!-- =================================================================================== -->
+
+	<import resource="MYSQL_database-config.xml" /> 
+	<import resource="security-config.xml" />
+	
+	<!-- =================================================================================== -->
+	<!-- JPA ORM                     														 -->
+	<!-- =================================================================================== -->
+	
+	<!-- This produces a container-managed EntityManagerFactory; rather than application-managed EntityManagerFactory as in case of LocalEntityManagerFactoryBean-->
+    
+    <bean id="entityManagerFactoryBean" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+      <property name="dataSource" ref="dataSource" />
+      <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
+      <property name="persistenceUnitName" value="gestionParking" />
+      
+      <!--  JpaVendorAdapter implementation for Hibernate EntityManager. Exposes Hibernate's persistence provider and EntityManager extension interface --> 
+      <property name="jpaVendorAdapter">
+         <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+      </property>
+   
+      <property name="jpaProperties">
+         <props>
+            <!--  <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+            <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+         </props>
+      </property>
+ 
+ <!--  
+   
+      This makes /META-INF/persistence.xml is no longer necessary
+      <property name="packagesToScan" value="com.howtodoinjava.demo.model" />
+     
+-->      
+   </bean>
+   
+   <tx:annotation-driven transaction-manager="transactionManager" />
+   
+   <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+   
+   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactoryBean" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaDialect" ref="jpaDialect" />
+	</bean>
+</beans>

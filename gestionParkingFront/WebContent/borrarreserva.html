@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Borrar reserva</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="borrarreserva.js"></script>
+</head>
+<body data-ng-app="ParkingApp">
+
+<div data-ng-controller="ParkingController">
+<h2>Borrar reserva</h2>
+		<input type="text"  data-ng-model="codigo"/>
+		<button data-ng-click="delete_reserva()">Borrar una reserva</button>
+
+</div>
+
+</body>
+</html>

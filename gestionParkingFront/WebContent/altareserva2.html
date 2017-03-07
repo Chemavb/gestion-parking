@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Alta propietario</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="altareserva2.js"></script>
+</head>
+<body data-ng-app="ParkingApp">
+
+<div data-ng-controller="ParkingController">
+<h2>Datos propietario:</h2>
+<form data-ng-submit="buscar_plazas_propietario()">
+		<table>
+			<tr>
+				<td>DNI Propietario</td>
+				<td><input type="text" data-ng-model="dni"/></td>	
+			</tr>
+			<tr>
+				<td>Fecha Inicio</td>
+				<td><input type="text" datetime="yyyy-MM-dd" data-ng-model="inicio"/></td>	
+			</tr>
+			<tr>
+				<td>Fecha Fin</td>
+				<td><input type="text" datetime="yyyy-MM-dd" data-ng-model="fin"/></td>	
+			</tr>
+		</table>
+		<input type="submit" value="Buscar..."/>
+		</form>
+		<ul>
+			<li>{{plazasDisponiblesPropietario.numero}} {{plazasDisponiblesPropietario.planta}} 
+			{{plazasDisponiblesPropietario.ancho}} {{plazasDisponiblesPropietario.largo}} {{plazasDisponiblesPropietario.bloqueada}}
+			{{plazasDisponiblesPropietario.observaciones}}</li> 	
+		</ul>
+		
+		<form data-ng-submit="alta_reserva1()">
+		<table>
+			<tr>
+				<td>Codigo</td>
+				<td><input type="text" data-ng-model="codigo"/></td>	
+			</tr>
+			<tr>
+				<td>Observaciones</td>
+				<td><input type="text" data-ng-model="observaciones"/></td>	
+			</tr>
+		</table>
+		<input type="submit" value="Reservar..."/>
+		</form>
+		
+		
+</div>
+
+</body>
+</html>

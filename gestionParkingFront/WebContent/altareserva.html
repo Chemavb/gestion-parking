@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Alta propietario</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="altareserva.js"></script>
+</head>
+<body data-ng-app="ParkingApp">
+
+<div data-ng-controller="ParkingController">
+<h2>Datos propietario:</h2>
+<form data-ng-submit="alta_reserva1()">
+		<table>
+			<tr>
+				<td>CODIGO</td>
+				<td><input type="text" data-ng-model="nuevaReserva.codigo"/></td>	
+			</tr>
+			<tr>
+				<td>DNI Propietario</td>
+				<td><input type="text" data-ng-model="nuevaReserva.propietario.dni"/></td>	
+			</tr>
+			<tr>
+				<td>Fecha</td>
+				<td><input type="date" data-ng-model="nuevaReserva.fecha"/></td>	
+			</tr>
+			<tr>
+				<td>Fecha Inicio</td>
+				<td><input type="date" data-ng-model="nuevaReserva.inicio"/></td>	
+			</tr>
+			<tr>
+				<td>Fecha Fin</td>
+				<td><input type="date" data-ng-model="nuevaReserva.fin"/></td>	
+			</tr>
+			<tr>
+				<td>Observaciones</td>
+				<td><input type="text" data-ng-model="nuevaReserva.observaciones"/></td>	
+			</tr>
+			
+		</table>
+		<input type="submit" value="ALTA"/>
+		</form>
+</div>
+
+</body>
+</html>

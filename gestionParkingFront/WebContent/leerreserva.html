@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Alta propietario</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="leerreserva.js"></script>
+</head>
+<body data-ng-app="ParkingApp">
+
+<div data-ng-controller="ParkingController">
+<h2>Leer reserva:</h2>
+		<input type="text"  data-ng-model="codigo"/>
+		<button data-ng-click="load_reserva()">Buscar</button>
+		<p>Reserva: {{reserva.codigo}} {{reserva.propietario.nombre}} {{reserva.plaza.numero}}</p>
+</div>
+
+</body>
+</html>

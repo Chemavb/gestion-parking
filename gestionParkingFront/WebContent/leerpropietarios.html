@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Alta propietario</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="leerpropietarios.js"></script>
+</head>
+<body data-ng-app="ParkingApp">
+
+<div data-ng-controller="ParkingController">
+<h2>Leer propietarios</h2>
+
+		<button data-ng-click="load_propietarios()">Recargar lista de propietarios</button>
+	
+		<br>
+		<ul data-ng-repeat="propietario in propietarios">
+			<li>{{propietario.nombre}} {{propietario.apellido1}} {{propietario.apellido2}} {{propietario.dni}} </li>		
+		</ul>
+</div>
+
+</body>
+</html>
